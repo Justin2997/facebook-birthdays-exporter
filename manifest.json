@@ -1,17 +1,20 @@
 {
-    "name": "Better Teams!",
-    "version": "1.0",
-    "manifest_version": 3,
-    "background": {
-      "service_worker": "background.js"
-    },
-    "host_permissions": [
-        "*://*.example.com/",
-        "*://*.teams.microsoft.com/*"
-    ],
-    "permissions": [
-        "activeTab",
-        "scripting"
-    ],
-    "action": {}
+  "name": "Facebooke birthday exporter",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": { "default_popup": "popup.html" },
+  "description": "Shows the Chromium release milestone a given code review was merged into.",
+  "host_permissions": ["https://www.facebook.com/*"],
+  "content_scripts": [{
+    "matches": ["https://*/*", "http://*/*"],
+    "js": ["contentScript.js"]
+  }],
+  "permissions": ["activeTab", "tabs", "scripting"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'"
+  },
+  "icons": {
+    "16": "icon.png",
+    "128": "icon.png"
   }
+}
