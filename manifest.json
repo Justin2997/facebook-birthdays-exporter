@@ -9,9 +9,12 @@
     "matches": ["https://*/*", "http://*/*"],
     "js": ["contentScript.js"]
   }],
-  "permissions": ["activeTab", "tabs", "scripting"],
+  "permissions": ["activeTab", "tabs", "scripting", "alarms", "notifications"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "icon.png",
