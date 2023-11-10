@@ -32,7 +32,7 @@ function download(filename, text) {
 function extractNamesAndAnniversaries() {
     // Regex to match potential dates for the entire year in French, English, and Spanish
     const dateRegex = /\d{1,2} (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre|january|february|march|april|may|june|july|august|september|october|november|december|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/g;
-  
+
     // Focuse more on the birdthday list
     const listBody = document.querySelector('div[role="main"]');
 
@@ -47,8 +47,6 @@ function extractNamesAndAnniversaries() {
         node = walker.nextNode();
     }
 
-    console.log(textNodes)
-  
     // Find names and dates based on proximity
     let pairs = [];
     textNodes.forEach((text, index) => {
@@ -84,6 +82,6 @@ function extractNamesAndAnniversaries() {
         // Trigger the download
         download('birday_' + pair.name + '.ics', icsFileContent);
     });
-  }
+}
 
 extractNamesAndAnniversaries();

@@ -3,7 +3,7 @@
   "version": "1.0",
   "manifest_version": 3,
   "action": { "default_popup": "popup.html" },
-  "description": "Shows the Chromium release milestone a given code review was merged into.",
+  "description": "Export you Facebooke birthday list",
   "host_permissions": ["https://www.facebook.com/*"],
   "content_scripts": [{
     "matches": ["https://*/*", "http://*/*"],
