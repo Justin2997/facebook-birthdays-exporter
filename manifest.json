@@ -1,5 +1,5 @@
 {
-  "name": "Facebooke birthday exporter",
+  "name": "Facebooke birthdays exporter",
   "version": "1.0",
   "manifest_version": 3,
   "action": { "default_popup": "popup.html" },

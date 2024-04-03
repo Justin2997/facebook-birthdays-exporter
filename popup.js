@@ -1,7 +1,7 @@
 document.getElementById('birthdayButton').addEventListener('click', scanFacebookBirtdayPage);
 
 function scanFacebookBirtdayPage() {
-    console.log("Scanning Facebook Birthday Page");
+    console.log("Scanning Facebook birthdays Page");
 
     chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         let url = tabs[0].url;

@@ -1,1 +1,1 @@
-# Facebook Birday Exporter
+# Facebook birthdays Exporter
