@@ -58,7 +58,10 @@ function dateStringToDate(dateStr) {
     // Extract day, month name, and year from parts
     const day = parseInt(parts[0], 10);
     const monthName = parts[1].toLowerCase();
-    const year = parseInt(parts[2], 10);
+    let year = parseInt(parts[2], 10);
+    if (!year) {
+        year = new Date().getFullYear();
+    }
     
     // Convert month name to month number
     const month = monthMap[monthName];
