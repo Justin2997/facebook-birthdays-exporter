@@ -8,10 +8,10 @@ chrome.runtime.onInstalled.addListener(() => {
       // Send a notification when the alarm goes off
       chrome.notifications.create({
         type: "basic",
-        iconUrl: "images/icon48.png",
+        iconUrl: "icon.png",
         title: "Weekly Reminder",
-        message: "Hey! Here's your weekly reminder to go scan your Facebook birthday page!"
-      });
+        message: "Hey! Here's your weekly reminder to go scan your Facebook birthday page using the extension!"
+      });s
     }
   });
   
