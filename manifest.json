@@ -1,9 +1,9 @@
 {
-  "name": "Facebooke birthdays exporter",
+  "name": "Facebook birthdays exporter",
   "version": "1.0",
   "manifest_version": 3,
   "action": { "default_popup": "popup.html" },
-  "description": "Export you Facebooke birthday list",
+  "description": "Export you Facebook birthday list",
   "host_permissions": ["https://www.facebook.com/*"],
   "content_scripts": [{
     "matches": ["https://*/*", "http://*/*"],
