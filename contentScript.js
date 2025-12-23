@@ -70,6 +70,91 @@ function dateStringToDate(dateStr) {
     return new Date(year, month, day);
 }  
 
+const APP_STORE_LINK = "https://apps.apple.com/ca/app/evenix/id1490629746";
+
+function resolveLocalizedCopy() {
+    const lang = navigator.language.toLowerCase();
+    if (lang.startsWith("fr")) {
+        return {
+            title: "Téléchargez l'application mobile Evenix",
+            cta: "Ouvrir dans l'App Store"
+        };
+    }
+
+    return {
+        title: "Download the Evenix mobile app",
+        cta: "Open in the App Store"
+    };
+}
+
+function createDownloadBanner() {
+    if (document.getElementById("evenix-download-banner")) return;
+
+    const { title, cta } = resolveLocalizedCopy();
+
+    const banner = document.createElement("div");
+    banner.id = "evenix-download-banner";
+    banner.style.position = "fixed";
+    banner.style.top = "0";
+    banner.style.left = "0";
+    banner.style.right = "0";
+    banner.style.zIndex = "2147483647"; // Above Facebook header
+    banner.style.background = "#1877F2";
+    banner.style.color = "#fff";
+    banner.style.display = "flex";
+    banner.style.alignItems = "center";
+    banner.style.justifyContent = "space-between";
+    banner.style.padding = "12px 16px";
+    banner.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+    banner.style.fontFamily = "Helvetica, Arial, sans-serif";
+
+    const text = document.createElement("span");
+    text.textContent = title;
+    text.style.fontSize = "14px";
+    text.style.fontWeight = "600";
+
+    const actions = document.createElement("div");
+    actions.style.display = "flex";
+    actions.style.alignItems = "center";
+    actions.style.gap = "8px";
+
+    const link = document.createElement("a");
+    link.href = APP_STORE_LINK;
+    link.textContent = cta;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.style.background = "#fff";
+    link.style.color = "#1877F2";
+    link.style.padding = "8px 12px";
+    link.style.borderRadius = "999px";
+    link.style.fontSize = "13px";
+    link.style.fontWeight = "600";
+    link.style.textDecoration = "none";
+
+    const close = document.createElement("button");
+    close.setAttribute("aria-label", "Dismiss app download banner");
+    close.textContent = "×";
+    close.style.background = "transparent";
+    close.style.border = "none";
+    close.style.color = "#fff";
+    close.style.fontSize = "20px";
+    close.style.cursor = "pointer";
+
+    close.addEventListener("click", () => {
+        banner.remove();
+        document.body.style.paddingTop = "";
+    });
+
+    actions.appendChild(link);
+    actions.appendChild(close);
+    banner.appendChild(text);
+    banner.appendChild(actions);
+
+    document.body.appendChild(banner);
+    const bannerHeight = banner.getBoundingClientRect().height;
+    document.body.style.paddingTop = `${bannerHeight}px`;
+}
+
 function extractNamesAndAnniversaries() {
     // Regex to match potential dates for the entire year in French, English, and Spanish
     const dateRegex = /\d{1,2} (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre|january|february|march|april|may|june|july|august|september|october|november|december|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/g;
@@ -128,5 +213,6 @@ function extractNamesAndAnniversaries() {
 }
 
 if (window.location.href.includes("facebook.com/events/birthdays")) {
+    createDownloadBanner();
     extractNamesAndAnniversaries();
 }
